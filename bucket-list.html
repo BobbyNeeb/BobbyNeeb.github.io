@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bucket List · Bobby Neeb</title>
+<meta name="description" content="Bobby Neeb's adventure bucket list.">
+<meta name="theme-color" content="#1f3328">
+<link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="site-header"></div>
+<div class="hero small" role="img" aria-label="Placeholder hero illustration of mountains">
+  <svg class="mtn" viewBox="0 0 1200 300" preserveAspectRatio="none" aria-hidden="true">
+<path d="M0 300 L0 190 L140 110 L260 180 L400 70 L520 160 L640 100 L780 190 L900 90 L1040 170 L1200 120 L1200 300Z" fill="#3e5d48" opacity=".55"/>
+<path d="M0 300 L0 230 L180 170 L320 230 L470 160 L610 240 L760 180 L930 240 L1080 190 L1200 220 L1200 300Z" fill="#24382c"/>
+</svg>
+  <div class="wrap">
+    <span class="tag">Someday is a plan</span>
+    <h1>Bucket List</h1>
+    <p>The big trips I'm working toward.</p>
+  </div>
+  <span class="placeholder-note">Hero photo placeholder</span>
+</div>
+<main id="main" class="wrap">
+
+<div id="bucket" aria-live="polite" style="margin-top:2rem"><p>Loading…</p></div>
+<noscript><p>The bucket list needs JavaScript. The raw data is at <a href="data/bucket-list.json">data/bucket-list.json</a>.</p></noscript>
+
+</main>
+<div id="site-footer"></div>
+<script src="js/site.js"></script>
+<script>
+(async () => {
+  const el = document.getElementById("bucket");
+  let items;
+  try { items = (await loadJSON("data/bucket-list.json")).items; } catch (e) { return showError(el, e); }
+  el.innerHTML = `<div class="grid wide">${items.map(i => `
+    <article class="card"${i.example ? ' style="opacity:.85;border-style:dashed"' : ""}>
+      <div class="body">
+        ${i.example ? '<span class="badge example">Example idea</span>' : ""}<span class="badge ${esc(i.status)}">${esc(i.status)}</span>
+        <h3>${esc(i.title)}</h3>
+        <p class="meta">${tbd(i.region)} &middot; Target: ${tbd(i.target)}</p>
+        <p>${tbd(i.notes)}</p>
+        ${i.link ? `<p><a href="${esc(i.link)}">See planning notes →</a></p>` : ""}
+      </div>
+    </article>`).join("")}</div>`;
+})();
+</script>
+</body>
+</html>

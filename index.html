@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bobby Neeb</title>
+<meta name="description" content="Bobby Neeb: hiking, wellness, and planning the next adventure.">
+<meta name="theme-color" content="#1f3328">
+<link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="site-header"></div>
+<div class="hero" role="img" aria-label="Placeholder hero illustration of mountains">
+  <svg class="mtn" viewBox="0 0 1200 300" preserveAspectRatio="none" aria-hidden="true">
+<path d="M0 300 L0 190 L140 110 L260 180 L400 70 L520 160 L640 100 L780 190 L900 90 L1040 170 L1200 120 L1200 300Z" fill="#3e5d48" opacity=".55"/>
+<path d="M0 300 L0 230 L180 170 L320 230 L470 160 L610 240 L760 180 L930 240 L1080 190 L1200 220 L1200 300Z" fill="#24382c"/>
+</svg>
+  <div class="wrap">
+    <span class="tag">Indiana &middot; Trails &middot; Wellness</span>
+    <h1>Hi, I'm Bobby.</h1>
+    <p>Hiker, backpacker, and trip planner. This is where I log the trails, track the journey, and plan what's next.</p>
+  </div>
+  <span class="placeholder-note">Hero photo placeholder</span>
+</div>
+<main id="main" class="wrap">
+
+<section class="two-col" style="margin-top:2rem">
+  <div>
+    <h2 style="margin-top:0">About me</h2>
+    <p class="lead">Since about 2022 I've lost over 200 pounds, and somewhere along the way I fell in love with the trail.</p>
+    <p>In 2026 I finished my informal <strong>Indiana Triple Crown</strong>: the Adventure Hiking Trail, the Knobstone Trail, and the Tecumseh Trail. Next up is a trip to the Boundary Waters in 2027, and someday, Patagonia.</p>
+    <p class="placeholder">Add a few more sentences about yourself here: where you're from, what you do, what gets you outside.</p>
+  </div>
+  <aside class="panel" aria-label="Quick stats">
+    <h3>At a glance</h3>
+    <div class="stats" style="margin:.5rem 0 0;grid-template-columns:1fr 1fr">
+      <div class="stat"><b id="stat-hikes">–</b><span>hikes logged</span></div>
+      <div class="stat"><b>200+</b><span>lbs lost since ~2022</span></div>
+      <div class="stat"><b>3/3</b><span>Indiana Triple Crown</span></div>
+      <div class="stat"><b id="stat-bucket">–</b><span>bucket list goals</span></div>
+    </div>
+  </aside>
+</section>
+
+<h2>Explore</h2>
+<div class="grid">
+  <a class="card" href="wellness.html"><div class="body"><div class="icon" aria-hidden="true">💪</div><h3>Wellness</h3><p>The journey so far, and what keeps me going.</p></div></a>
+  <a class="card" href="hikes.html"><div class="body"><div class="icon" aria-hidden="true">🥾</div><h3>Hikes</h3><p>A running log of trails I've hiked and backpacked.</p></div></a>
+  <a class="card" href="bucket-list.html"><div class="body"><div class="icon" aria-hidden="true">🗺️</div><h3>Bucket List</h3><p>Big trips on the horizon, from the Boundary Waters to Patagonia.</p></div></a>
+  <a class="card" href="journal.html"><div class="body"><div class="icon" aria-hidden="true">📓</div><h3>Planning Journal</h3><p>Prep notes, gear lists, and open questions for upcoming trips.</p></div></a>
+</div>
+
+</main>
+<div id="site-footer"></div>
+<script src="js/site.js"></script>
+<script>
+loadJSON("data/hikes.json").then(d => document.getElementById("stat-hikes").textContent = d.hikes.length).catch(()=>{});
+loadJSON("data/bucket-list.json").then(d => document.getElementById("stat-bucket").textContent = d.items.filter(i=>!i.example).length).catch(()=>{});
+</script>
+</body>
+</html>

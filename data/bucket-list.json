@@ -1,0 +1,41 @@
+{
+  "_note": "Bucket list. status can be: idea, planning, booked, done. Set example to true for sample entries (they show an 'Example idea' badge); delete those when you like.",
+  "items": [
+    {
+      "title": "Boundary Waters Canoe Area Wilderness (BWCAW)",
+      "region": "Minnesota",
+      "target": "2027",
+      "status": "planning",
+      "notes": "Canoe trip. Prep is underway in the Planning Journal.",
+      "link": "journal.html#bwcaw-2027-prep",
+      "example": false
+    },
+    {
+      "title": "Patagonia trek",
+      "region": "Patagonia, South America",
+      "target": "~Feb 2029",
+      "status": "idea",
+      "notes": "Route TBD.",
+      "link": "",
+      "example": false
+    },
+    {
+      "title": "Example idea: a long-distance thru-hike section",
+      "region": "TBD",
+      "target": "TBD",
+      "status": "idea",
+      "notes": "Placeholder. Replace or remove.",
+      "link": "",
+      "example": true
+    },
+    {
+      "title": "Example idea: a national park backcountry trip",
+      "region": "TBD",
+      "target": "TBD",
+      "status": "idea",
+      "notes": "Placeholder. Replace or remove.",
+      "link": "",
+      "example": true
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Planning Journal · Bobby Neeb</title>
+<meta name="description" content="Bobby Neeb's trip planning journal.">
+<meta name="theme-color" content="#1f3328">
+<link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="site-header"></div>
+<div class="hero small" role="img" aria-label="Placeholder hero illustration of mountains">
+  <svg class="mtn" viewBox="0 0 1200 300" preserveAspectRatio="none" aria-hidden="true">
+<path d="M0 300 L0 190 L140 110 L260 180 L400 70 L520 160 L640 100 L780 190 L900 90 L1040 170 L1200 120 L1200 300Z" fill="#3e5d48" opacity=".55"/>
+<path d="M0 300 L0 230 L180 170 L320 230 L470 160 L610 240 L760 180 L930 240 L1080 190 L1200 220 L1200 300Z" fill="#24382c"/>
+</svg>
+  <div class="wrap">
+    <span class="tag">Prep notes</span>
+    <h1>Planning Journal</h1>
+    <p>Gear lists, permits, training, and open questions for upcoming trips.</p>
+  </div>
+  <span class="placeholder-note">Hero photo placeholder</span>
+</div>
+<main id="main" class="wrap">
+
+<div id="journal" aria-live="polite"><p>Loading…</p></div>
+<noscript><p>The journal needs JavaScript. The raw data is at <a href="data/journal.json">data/journal.json</a>.</p></noscript>
+
+</main>
+<div id="site-footer"></div>
+<script src="js/site.js"></script>
+<script>
+(async () => {
+  const el = document.getElementById("journal");
+  let entries;
+  try { entries = (await loadJSON("data/journal.json")).entries; } catch (e) { return showError(el, e); }
+  el.innerHTML = entries.map(e => `
+    <article class="journal-entry" id="${esc(e.id)}">
+      <header>
+        <span class="badge planning">${esc(e.status)}</span><span class="badge">Updated ${esc(e.updated)}</span>
+        <h2 style="margin:.4em 0 .2em">${esc(e.title)}</h2>
+        ${e.intro ? `<p class="lead" style="margin:0">${esc(e.intro)}</p>` : ""}
+      </header>
+      <div class="journal-sections">${e.sections.map(s => `
+        <section><h3>${esc(s.heading)}</h3>
+          ${s.text ? `<p>${tbd(s.text)}</p>` : ""}
+          ${s.items ? `<ul>${s.items.map(x => `<li>${tbd(x)}</li>`).join("")}</ul>` : ""}
+        </section>`).join("")}
+      </div>
+    </article>`).join("");
+  if (location.hash) document.querySelector(location.hash)?.scrollIntoView();
+})();
+</script>
+</body>
+</html>

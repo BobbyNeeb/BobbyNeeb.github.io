@@ -1,0 +1,22 @@
+{
+  "_note": "Planning journal. Newest first. Each entry has an id (used in links), title, status, updated date, and a list of sections. Each section has a heading and either 'text' (a paragraph) or 'items' (a bullet list). Use 'TBD' for anything not decided yet.",
+  "entries": [
+    {
+      "id": "bwcaw-2027-prep",
+      "title": "BWCAW 2027 Prep",
+      "status": "Planning",
+      "updated": "Nov 2026",
+      "intro": "Planning notes for a 2027 trip to the Boundary Waters Canoe Area Wilderness in Minnesota.",
+      "sections": [
+        { "heading": "Dates", "text": "TBD" },
+        { "heading": "Route / entry point", "text": "TBD" },
+        { "heading": "Permits", "items": ["Permit type: TBD", "Reservation date: TBD", "Group size: TBD"] },
+        { "heading": "Gear checklist", "items": ["Canoe / paddles / PFDs: TBD", "Shelter and sleep system: TBD", "Rain gear: TBD", "Cooking and water treatment: TBD", "Navigation (maps): TBD"] },
+        { "heading": "Footwear", "text": "Plan to consider trail runners for wet conditions, starting March 2027." },
+        { "heading": "Food", "items": ["Meal plan: TBD", "Food storage: TBD"] },
+        { "heading": "Training", "items": ["Training plan: TBD"] },
+        { "heading": "Open questions", "items": ["Which entry point and route?", "Trip length?", "Who's going?"] }
+      ]
+    }
+  ]
+}

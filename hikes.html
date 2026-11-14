@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hikes · Bobby Neeb</title>
+<meta name="description" content="Bobby Neeb's hike log.">
+<meta name="theme-color" content="#1f3328">
+<link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="site-header"></div>
+<div class="hero small" role="img" aria-label="Placeholder hero illustration of mountains">
+  <svg class="mtn" viewBox="0 0 1200 300" preserveAspectRatio="none" aria-hidden="true">
+<path d="M0 300 L0 190 L140 110 L260 180 L400 70 L520 160 L640 100 L780 190 L900 90 L1040 170 L1200 120 L1200 300Z" fill="#3e5d48" opacity=".55"/>
+<path d="M0 300 L0 230 L180 170 L320 230 L470 160 L610 240 L760 180 L930 240 L1080 190 L1200 220 L1200 300Z" fill="#24382c"/>
+</svg>
+  <div class="wrap">
+    <span class="tag">Trail log</span>
+    <h1>Hikes</h1>
+    <p>Every trail, every lesson, rain or shine.</p>
+  </div>
+  <span class="placeholder-note">Hero photo placeholder</span>
+</div>
+<main id="main" class="wrap">
+
+<div class="view-switch" role="group" aria-label="Choose view">
+  <button type="button" data-view="cards" aria-pressed="true">Cards</button>
+  <button type="button" data-view="table" aria-pressed="false">Table</button>
+</div>
+<div id="hikes" aria-live="polite"><p>Loading hikes…</p></div>
+<noscript><p>The hike log needs JavaScript. The raw data is at <a href="data/hikes.json">data/hikes.json</a>.</p></noscript>
+
+</main>
+<div id="site-footer"></div>
+<script src="js/site.js"></script>
+<script>
+(async () => {
+  const el = document.getElementById("hikes");
+  let hikes;
+  try { hikes = (await loadJSON("data/hikes.json")).hikes; } catch (e) { return showError(el, e); }
+  const cards = () => `<div class="grid wide">${hikes.map(h => `
+    <article class="card">
+      <div class="card-img">${h.photo ? `<img src="${esc(h.photo)}" alt="${esc(h.name)}">` : "Photo placeholder"}</div>
+      <div class="body">
+        <span class="badge">${esc(h.type)}</span>
+        <h3>${esc(h.name)}</h3>
+        <p class="meta">${esc(h.location)} &middot; ${esc(h.dates)} &middot; Distance: ${tbd(h.distance)}</p>
+        <p>${esc(h.summary)}</p>
+        ${h.highlights?.length ? `<ul>${h.highlights.map(x => `<li>${esc(x)}</li>`).join("")}</ul>` : ""}
+      </div>
+    </article>`).join("")}</div>`;
+  const table = () => `<div class="table-wrap"><table>
+    <caption class="skip">Hike log</caption>
+    <thead><tr><th scope="col">Trail</th><th scope="col">Where</th><th scope="col">When</th><th scope="col">Type</th><th scope="col">Distance</th><th scope="col">Notes</th></tr></thead>
+    <tbody>${hikes.map(h => `<tr><th scope="row">${esc(h.name)}</th><td>${esc(h.location)}</td><td>${esc(h.dates)}</td><td>${esc(h.type)}</td><td>${tbd(h.distance)}</td><td>${esc(h.summary)}</td></tr>`).join("")}</tbody>
+  </table></div>`;
+  const render = v => {
+    el.innerHTML = v === "table" ? table() : cards();
+    document.querySelectorAll(".view-switch button").forEach(b => b.setAttribute("aria-pressed", b.dataset.view === v));
+  };
+  document.querySelectorAll(".view-switch button").forEach(b => b.addEventListener("click", () => render(b.dataset.view)));
+  render(new URLSearchParams(location.search).get("view") || "cards");
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+{
+  "_note": "Hike log. Newest first. Copy one entry, edit the fields, and save. 'highlights' is a list of short bullet points; leave it [] if you have none.",
+  "hikes": [
+    {
+      "name": "Tecumseh Trail",
+      "location": "Indiana",
+      "dates": "Nov 2–6, 2026",
+      "type": "Backpacking",
+      "summary": "Completed the Tecumseh Trail, finishing my informal Indiana Triple Crown.",
+      "highlights": ["Indiana Triple Crown: complete"],
+      "distance": "TBD",
+      "photo": ""
+    },
+    {
+      "name": "Knobstone Trail",
+      "location": "Indiana",
+      "dates": "Oct 4–9, 2026",
+      "type": "Solo backpack",
+      "summary": "Solo backpacking trip from Deam Lake to Delaney Park.",
+      "highlights": ["Deam Lake → Delaney Park"],
+      "distance": "TBD",
+      "photo": ""
+    },
+    {
+      "name": "Adventure Hiking Trail",
+      "location": "O'Bannon Woods State Park, Indiana",
+      "dates": "July 2026",
+      "type": "Hike",
+      "summary": "Got caught in heavy rain without rain gear. Lesson learned.",
+      "highlights": ["Pack rain gear, always"],
+      "distance": "TBD",
+      "photo": ""
+    }
+  ]
+}
